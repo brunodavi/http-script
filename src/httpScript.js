@@ -3,10 +3,9 @@ import { addProtocol } from './lib/urlUtils.js'
 import { parseHttpScript } from './lib/parseHttpScript.js'
 import { evalParsed } from './lib/evalParsed.js'
 
-export function run(script, httpRequest = (options) => options) {
+export function run(script, httpRequest = (options) => options, state = {}) {
   const parsedList = parseHttpScript(script)
 
-  let state = {}
   state.default = {
     ...REST_OPTIONS,
   }

@@ -339,3 +339,10 @@ test('State Default', () => {
   assert.equal(result.headers.Auth, 'XXX')
   assert.equal(result.headers['User-Agent'], 'HTTP Script')
 })
+
+test('Initial State', () => {
+  const result = httpScript('g :1234/user/$id', (x) => x, { id: 1 })
+  const [userId] = result.url.split('/').slice(-1)
+
+  assert.equal(userId, '1')
+})
