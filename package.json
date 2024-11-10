@@ -1,13 +1,13 @@
 {
   "name": "http-script",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Tool to easily create http request scripts",
   "type": "module",
   "main": "src/httpScript.js",
   "scripts": {
-    "test": "node tests/index.js",
-    "lint": "eslint src tests",
-    "build": "babel src/httpScript.js -o dist/http-script.js && ./scripts/bundle_fix.sh",
+    "test": "node --test",
+    "lint": "eslint --fix",
+    "build": "esbuild --global-name=httpScript --minify --bundle --outdir=dist src/httpScript.js",
     "prepare": "husky"
   },
   "repository": {
@@ -21,15 +21,16 @@
   },
   "homepage": "https://github.com/brunodavi/http-script#readme",
   "devDependencies": {
-    "@babel/cli": "^7.25.6",
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.4",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.10.0",
+    "esbuild": "^0.24.0",
     "eslint": "^9.10.0",
-    "globals": "^15.9.0",
-    "husky": "^9.1.6"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.12.0",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "sync-request": "^6.1.0"

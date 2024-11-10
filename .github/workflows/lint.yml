@@ -1,8 +1,6 @@
 name: Linter
 
 on:
-  push:
-    paths: [ '**/*.js' ]
   pull_request:
     paths: [ '**/*.js' ]
 

@@ -1,8 +1,6 @@
-name: Testing
+name: Test
 
 on:
-  push:
-    paths: [ '**/*.js' ]
   pull_request:
     paths: [ '**/*.js' ]
 
