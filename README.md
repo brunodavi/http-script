@@ -1,6 +1,6 @@
 # HTTP Script
 
-[![Testing](https://github.com/brunodavi/http-script/actions/workflows/test.yml/badge.svg)](https://github.com/brunodavi/http-script/actions/workflows/test.yml)
+[![Test](https://github.com/brunodavi/http-script/actions/workflows/test.yml/badge.svg)](https://github.com/brunodavi/http-script/actions/workflows/test.yml)
 
 Tool to easily create http request scripts
 
