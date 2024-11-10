@@ -60,46 +60,51 @@ npm install github:brunodavi/http-script
 or use cdn:
 
 ```html
-https://cdn.jsdelivr.net/gh/brunodavi/http-script@v1.0.2/dist/http-script.min.js
+https://cdn.jsdelivr.net/gh/brunodavi/http-script@v2.0.0/dist/httpScript.min.js
 ```
 
 ### How to Use
 
 ```js
-import httpScript from 'http-script'
-import request from "sync-request";
 import fs from 'fs'
+import httpScript from 'http-script'
 
-function httpRequest(options) {
-  const fileToSend =
-    (options.fileToSend)
-      ? fs.readFileSync(options.fileToSend)
-      : undefined
+async function httpRequest(options) {
+  const fileToSend = options.fileToSend
+    ? fs.readFileSync(options.fileToSend)
+    : undefined
 
-  const response = request(
-    options.method,
-    options.url,
+  const headers = options.headers || {}
+  const body = options.body || fileToSend
 
-    {
-      headers: options.headers,
-      qs: options.queries,
-      body: options.body || fileToSend
-    }
-  )
+  const queryParams = new URLSearchParams(options.queries).toString()
+  const url =
+    options.queries && queryParams
+      ? `${options.url}?${queryParams}`
+      : options.url
 
-  if (options.saveFile != null)
-    fs.writeFileSync(options.saveFile, response.getBody())
+  const response = await fetch(url, {
+    method: options.method,
+    headers: headers,
+    body: body,
+  })
+
+  if (options.saveFile) {
+    fs.writeFileSync(options.saveFile, await response.text())
+  }
 
   return response
 }
 
+const restScript = `
+g httpbin.org
 
-const response = httpScript(
-  'g httpbin.org/get',
-  httpRequest
-)
+---
 
-console.log(response)
+p /post
+`
+
+httpScript.run(restScript, httpRequest).then(console.log)
 ```
 
 ### Script Structure
@@ -304,7 +309,6 @@ user-agent: HTTP Script
 
 Thus adding both the user-agent header and
 the authorization header
-
 
 ### Contributing
 
