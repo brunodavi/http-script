@@ -1,6 +1,6 @@
 {
   "name": "http-script",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Tool to easily create http request scripts",
   "type": "module",
   "main": "src/httpScript.js",
