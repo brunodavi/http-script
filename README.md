@@ -60,7 +60,7 @@ npm install github:brunodavi/http-script
 or use cdn:
 
 ```html
-https://cdn.jsdelivr.net/gh/brunodavi/http-script@v2.0.0/dist/httpScript.min.js
+https://cdn.jsdelivr.net/gh/brunodavi/http-script@v2.1.0/dist/httpScript.min.js
 ```
 
 ### How to Use
